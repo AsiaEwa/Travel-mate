@@ -4,7 +4,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![Gradio](https://img.shields.io/badge/Frontend-Gradio-F97316) ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57)
 
-**Demonstracja:** [demo/travelmate_demo.mp4](demo/travelmate_demo.mp4) — około 1 minuty 28 sekund, **animowana symulacja przepływu** oparta na wynikach API. To nie jest rzeczywisty screen recording przeglądarki. Na potrzeby formalnego oddania zadania warto dodatkowo nagrać faktyczny ekran uruchomionej aplikacji i podmienić plik.
+**Demonstracja:** [https://github.com/AsiaEwa/Travel-mate/releases/tag/v1.0.0 — film demonstracyjny w zakładce releases, **animowana symulacja działania przykłaowego wyboru w aplikacji** oparta na wynikach API.
 
 ## Funkcje
 
