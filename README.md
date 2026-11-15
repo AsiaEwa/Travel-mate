@@ -118,7 +118,7 @@ $env:OPENAI_API_KEY = 'TWOJ_KLUCZ_API'
 $env:OPENAI_MODEL = 'gpt-5.4-mini'
 ```
 
-Uruchom backend, zaznacz **AI (opcjonalnie)** i wygeneruj plan. Tę funkcję uruchamia backend, a nie przeglądarka. Nie umieszczaj klucza w Git ani w filmie.
+Uruchom backend, zaznacz **AI (opcjonalnie)** i wygeneruj plan. Tę funkcję uruchamia backend, a nie przeglądarka. Nie udostępniaj klucza publicznie (tylko lokalne uruchomienie).
 
 ### Sieć i tryb offline
 
