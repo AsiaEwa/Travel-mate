@@ -1,4 +1,5 @@
-# ✳ TravelMate — Python Full-Stack MVP / Planer podróży
+# ✳ TravelMate — aplikacja MVP / Planer podróży
+Python Full-Stack
 
 **TravelMate** to niewielka aplikacja webowa z dwujęzycznym interfejsem (PL/EN), napisana w Pythonie po stronie **frontendu (Gradio)** i **backendu (FastAPI)**. Pozwala odkryć ciekawe obiekty turystyczne i biznesowe, dobrać plan zwiedzania do dostępnego czasu oraz znaleźć serwisy transportu publicznego dla danego miasta. Zapisane plany przechowuje w lokalnej bazie **SQLite**.
 
