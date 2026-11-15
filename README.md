@@ -5,11 +5,11 @@ Python Full-Stack
 
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB) ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688) ![Gradio](https://img.shields.io/badge/Frontend-Gradio-F97316) ![SQLite](https://img.shields.io/badge/Database-SQLite-003B57)
 
-**Demonstracja:** [https://github.com/AsiaEwa/Travel-mate/releases/tag/v1.0.0 — film demonstracyjny w zakładce releases, **animowana symulacja działania przykłaowego wyboru w aplikacji** oparta na wynikach API.
+**Demonstracja:** [https://github.com/AsiaEwa/Travel-mate/releases/tag/v1.0.0 — film demonstracyjny w zakładce releases, **symulacja działania przykładowego wyboru w aplikacji oparta na wynikach API**.
 
 ## Funkcje
 
-- **Wyszukiwanie kraju i miasta:** gotowe dane offline dla Gdańska, Warszawy, Krakowa, Londynu, Paryża i Berlina; dla innych miast geokodowanie przez OpenStreetMap Nominatim (wymaga internetu).
+- **Wyszukiwanie kraju i miasta:** gotowe dane offline dla wybranyh miast: Gdańska, Warszawy, Krakowa, Londynu, Paryża i Berlina; dla innych miast geokodowanie przez OpenStreetMap Nominatim (wymaga internetu i dłuższego ładowania).
 - **Miejsca warte zobaczenia:** wybrane zabytki, muzea, dworce, centra biznesowe/konferencyjne; filtrowanie: turystyka, biznes, wszystkie; opcjonalnie obiekty w promieniu 3,5 km od centrum.
 - **Trasa A → B:** dwa wybrane punkty, 7 środków transportu: pieszo, rower, samochód, tramwaj, autobus, metro, pociąg; orientacyjny czas, dystans i link do Google Maps.
 - **Transport lokalny:** dla miast demonstracyjnych linki do konkretnych oficjalnych przewoźników/organizatorów i planerów połączeń, uporządkowane według zgodności z wybranym środkiem komunikacji. Dla innych miast linki do map/planera ogólnego, bez zgadywania lokalnych przewoźników.
@@ -17,7 +17,7 @@ Python Full-Stack
 - **Opcjonalne AI:** jeżeli ustawisz `OPENAI_API_KEY`, dodatkowa funkcja tworzy krótki opis *już obliczonego planu* przez OpenAI Responses API. AI nie wyznacza czasów przejazdu i nie może dopisywać nowych miejsc. **Bez klucza aplikacja działa normalnie**; opis planu przygotowuje algorytm regułowy.
 - **CRUD planów:** tworzenie, lista/odczyt, aktualizacja nazwy/środka transportu/limitu czasu i usuwanie zapisanych wycieczek.
 
-> **Istotne ograniczenia MVP:** „popularne” miejsca w 6 miastach to **ręcznie przygotowany katalog demonstracyjny**, a nie globalny ranking popularności. Dane OSM dla pozostałych miast to wybrane punkty w ograniczonej okolicy centrum — nie ranking. Czasy tramwaju, autobusu, metra, pociągu, roweru i pieszego przejścia są **uproszczonymi estymacjami**, nie rozkładami, danymi o korkach ani realnymi trasami po sieci. Dla samochodu backend próbuje dodatkowo skorzystać z publicznego demo OSRM (po niepowodzeniu też liczy estymację). Sprawdź rzeczywiste przejazdy i rozkłady u przewoźników. Ilości CO₂ mają charakter ilustracyjny, nie są audytowanym śladem węglowym. Nazwy obiektów i godziny otwarcia należy weryfikować.
+> **Istotne ograniczenia MVP:** „popularne” miejsca w 6 miastach to ** przygotowany katalog demonstracyjny**, a nie globalny ranking popularności. Dane OSM dla pozostałych miast to wybrane punkty w ograniczonej okolicy centrum — nie ranking. Czasy tramwaju, autobusu, metra, pociągu, roweru i pieszego przejścia są **uproszczonymi estymacjami**, nie rozkładami, danymi o korkach ani realnymi trasami po sieci. Dla samochodu backend próbuje dodatkowo skorzystać z publicznego demo OSRM (po niepowodzeniu też liczy estymację). Sprawdź rzeczywiste przejazdy i rozkłady u przewoźników. Ilości CO₂ mają charakter ilustracyjny, nie są audytowanym śladem węglowym. Nazwy obiektów i godziny otwarcia należy weryfikować.
 
 ## Technologie i architektura
 
@@ -161,44 +161,6 @@ Przykład żądania (można wkleić do Swaggera `http://127.0.0.1:8000/docs`):
 
 **Wykorzystanie asystenta AI przy tworzeniu kodu:** Projekt, struktura modułów, boilerplate FastAPI/Gradio, przykładowe testy, README i skrypt demonstracji zostały przygotowane przy wsparciu **ChatGPT (OpenAI)**. Kod uruchomiono lokalnie, endpointy przetestowano przez `pytest`, a scenariusz frontendu sprawdzono przez wywołania callbacków. Właściciel repozytorium powinien przejrzeć kod, wyjaśnić własnymi słowami architekturę i wykonać finalny test w przeglądarce na swoim komputerze. Plik `AGENTS.md` dokumentuje zasady dla narzędzi kodujących; nie oznacza, że użyto dedykowanego autonomicznego agenta.
 
-## Film demo
-
-W repo umieszczono `demo/travelmate_demo.mp4` — animację poglądową, przedstawiającą scenariusz: Gdańsk → atrakcje → limit czasu → Smart Plan → transport → A/B → Google Maps → zapis → edycja/usunięcie. Dane liczbowe i zawartość planu opierają się na rzeczywistych odpowiedziach **uruchomionego lokalnego backendu**. Ze względu na ograniczenie przeglądarki w środowisku przygotowania nie był możliwy pełny zrzut obrazu działającego Gradio, więc **animacja jest symulacją interfejsu, a nie rzeczywistym nagraniem kliknięć**. Polecam dodatkowe nagranie prawdziwej aplikacji Windows `Win + Alt + R`, OBS lub Clipchamp; podmień plik przed formalnym oddaniem, jeśli rekruter oczekuje zapisu obsługi rzeczywistej przeglądarki.
-
-Symulację można ponownie wygenerować ze skryptu (przy uruchomionym backendzie, po zainstalowaniu [FFmpeg](https://ffmpeg.org/download.html) i dodatków):
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements-demo.txt
-.\.venv\Scripts\python.exe demo/create_demo.py
-```
-
-Skrypt utworzy i usunie własny przykładowy rekord w SQLite (nie usuwa pozostałych planów).
-
-## Publiczny GitHub — publikacja
-
-1. Na https://github.com zaloguj się i wybierz **New repository** → nazwa `travelmate-mvp` → **Public** → **nie zaznaczaj tworzenia README/.gitignore/licencji** (bo projekt już je ma) → **Create repository**.
-2. W PowerShell, **wewnątrz folderu rozpakowanego projektu**, wykonaj (wstaw swój login):
-
-```powershell
-git init
-git add .
-git commit -m "Initial full-stack TravelMate MVP"
-git branch -M main
-git remote add origin https://github.com/TWOJ_LOGIN/travelmate-mvp.git
-git push -u origin main
-```
-
-3. Odśwież repozytorium na GitHubie. Powinny być widoczne m.in. `README.md`, `backend/`, `frontend/`, `tests/`, `demo/travelmate_demo.mp4`, `AGENTS.md`. **Nie publikuj** `.env`, `.venv/`, ani lokalnej bazy `data/plans.db` (są w `.gitignore`).
-4. Kolejne zmiany:
-
-```powershell
-git status
-git add .
-git commit -m "Improve route planning and UI"
-git push
-```
-
-W GitHubie można także dodać filmik do opisu projektu, wskazując link `[Zobacz demo](demo/travelmate_demo.mp4)`. Jeżeli logowanie z `git push` wymaga uwierzytelnienia, zaloguj się w oknie przeglądarki Git Credential Manager; GitHub nie akceptuje zwykłego hasła konta w terminalu.
 
 ## Źródła / informacje prawne
 
@@ -224,8 +186,4 @@ Pozostałe adresy wymagają dostępu do internetu: frontend wywołuje
 Wyniki są buforowane i wyszukiwanie jest ograniczone czasowo zgodnie
 z limitem publicznego API. Jeśli miejsce nie zostanie znalezione,
 użytkownik zobaczy czytelny komunikat.
-
-**English:** Enter any known POI or address directly in the A/B text inputs.
-Offline demo landmarks work without networking. Arbitrary addresses use
-our FastAPI geocoding endpoint backed by OpenStreetMap Nominatim when online.
 
